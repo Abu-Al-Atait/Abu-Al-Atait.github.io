@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Atta | QA Tester & Developer</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            900: '#0a1128',
+                            800: '#121f3d',
+                            700: '#1c2e55'
+                        },
+                        emerald: {
+                            400: '#34d399',
+                            500: '#10b981',
+                            glow: 'rgba(16, 185, 129, 0.4)'
+                        }
+                    },
+                    boxShadow: {
+                        'neon': '0 0 20px rgba(16, 185, 129, 0.3)',
+                        'neon-hover': '0 0 30px rgba(16, 185, 129, 0.6)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS for Animations -->
+    <style>
+        body {
+            background-color: #0a1128;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a1128;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1c2e55;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10b981;
+        }
+
+        /* Scroll Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* Floating Animation for Hero Image */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(to right, #34d399, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-emerald-500 selection:text-white">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center bg-navy-900/80 backdrop-blur-md border-b border-white/5 shadow-lg">
+            <a href="#" class="text-2xl font-bold tracking-tighter text-white">
+                M<span class="text-emerald-500">.</span>Atta
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="text-gray-300 hover:text-emerald-400 transition-colors text-sm font-medium">About</a>
+                <a href="#skills" class="text-gray-300 hover:text-emerald-400 transition-colors text-sm font-medium">Skills</a>
+                <a href="#projects" class="text-gray-300 hover:text-emerald-400 transition-colors text-sm font-medium">Experience</a>
+                <a href="#platforms" class="text-gray-300 hover:text-emerald-400 transition-colors text-sm font-medium">Platforms</a>
+                <a href="#contact" class="px-5 py-2 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/50 hover:bg-emerald-500 hover:text-white hover:shadow-neon transition-all duration-300 text-sm font-medium">
+                    Contact Me
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-800 border-b border-white/10 absolute w-full left-0">
+            <div class="flex flex-col px-6 py-4 space-y-4">
+                <a href="#about" class="text-gray-300 hover:text-emerald-400">About</a>
+                <a href="#skills" class="text-gray-300 hover:text-emerald-400">Skills</a>
+                <a href="#projects" class="text-gray-300 hover:text-emerald-400">Experience</a>
+                <a href="#platforms" class="text-gray-300 hover:text-emerald-400">Platforms</a>
+                <a href="#contact" class="text-emerald-400 font-medium">Contact Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
+        <!-- Background Glow -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+            <!-- Text Content -->
+            <div class="order-2 lg:order-1 text-center lg:text-left reveal">
+                <p class="text-emerald-400 font-mono mb-3 tracking-wide">Hello World,</p>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-4 leading-tight">
+                    Hi, I'm <br /> <span class="text-gradient">Mohamed Atta.</span>
+                </h1>
+                <h2 class="text-xl md:text-2xl text-gray-300 font-medium mb-6">
+                    Software QA Tester & CS Student.
+                </h2>
+                <p class="text-gray-400 text-lg mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                    Ensuring flawless user experiences with a developer's mindset. I don't just report bugs; I analyze code logic, track API logs, and bridge the gap between users and development teams.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#platforms" class="w-full sm:w-auto px-8 py-3 rounded-full bg-emerald-500 text-white font-semibold hover:bg-emerald-400 shadow-neon hover:shadow-neon-hover transition-all duration-300 text-center">
+                        Hire Me
+                    </a>
+                    <a href="#projects" class="w-full sm:w-auto px-8 py-3 rounded-full border border-gray-600 text-gray-300 font-semibold hover:border-emerald-500 hover:text-emerald-400 transition-all duration-300 text-center">
+                        View Work
+                    </a>
+                </div>
+            </div>
+
+            <!-- Profile Image -->
+            <div class="order-1 lg:order-2 flex justify-center lg:justify-end reveal reveal-delay-2">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 animate-float">
+                    <!-- Glowing Border -->
+                    <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-emerald-500 to-blue-500 blur-md opacity-70"></div>
+                    <!-- Image -->
+                    <img src="https://lh3.googleusercontent.com/gg/AJWXcNcEMk9bIGaYxHpxkQ7_Bc9FWs87J8UTGeTd6rArnnb1wIPhb1f6E0MdHtuNUxP9beL3NKuqj7kNlDO9bWkO_gu6Z-KZLJFZzWpmCckRfu1H8fm13jUjTzPaCcB8E5Tzrpu5wTAGCNfxBTkhQkA_LYjhI5dFghFe69SY_6Tl5kaql5BkkuHoWpNwaXUTHJRTaT0biwWcgEtIOcRAlrE-RBgF1kr_gLDBlGcFjIe107RChgYhPHo3qiD0p1oPtQIPg-X3Gw1N7GZE2mBQs3bm6qXVt7X6KmIAhA=s0" 
+                         alt="Mohamed Atta" 
+                         class="absolute inset-1 w-[calc(100%-8px)] h-[calc(100%-8px)] object-cover rounded-full border-4 border-navy-900 z-10 shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-navy-800">
+        <div class="max-w-4xl mx-auto px-6 reveal">
+            <div class="flex items-center space-x-4 mb-10">
+                <h2 class="text-3xl font-bold text-white"><span class="text-emerald-500 text-2xl font-mono">01.</span> About Me</h2>
+                <div class="h-px bg-white/10 flex-grow"></div>
+            </div>
+            
+            <div class="text-gray-300 space-y-6 text-lg leading-relaxed">
+                <p>
+                    I am an undergraduate student pursuing a Bachelor of Science in Computer Science and Information Technology (CSIT) at the <strong class="text-emerald-400">Egypt-Japan University of Science and Technology (E-JUST)</strong>, expecting to graduate in 2029.
+                </p>
+                <p>
+                    My journey started in software engineering, learning languages like Java and C++, and understanding complex data structures and network architectures. This solid programming foundation gives me a unique advantage as a <strong class="text-white">Software QA Tester</strong>. 
+                </p>
+                <p>
+                    Unlike traditional testers who only look at the UI, my developer's mindset allows me to dive deeper. I excel at inspecting network requests, analyzing console error logs, and predicting edge-case scenarios that automated tests might miss. My goal is to collaborate with dev teams to build robust, bug-free applications.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex items-center space-x-4 mb-12 reveal">
+                <h2 class="text-3xl font-bold text-white"><span class="text-emerald-500 text-2xl font-mono">02.</span> Technical Skills</h2>
+                <div class="h-px bg-white/10 flex-grow"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- QA Skills -->
+                <div class="bg-navy-800 p-8 rounded-2xl border border-white/5 hover:border-emerald-500/30 transition-all duration-300 reveal reveal-delay-1 group">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-bug text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">QA & Testing</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-sm rounded-full bg-emerald-900/30 text-emerald-400 border border-emerald-500/30">Manual Testing</span>
+                        <span class="px-3 py-1 text-sm rounded-full bg-emerald-900/30 text-emerald-400 border border-emerald-500/30">Bug Reporting</span>
+                        <span class="px-3 py-1 text-sm rounded-full bg-emerald-900/30 text-emerald-400 border border-emerald-500/30">UI/UX Evaluation</span>
+                        <span class="px-3 py-1 text-sm rounded-full bg-emerald-900/30 text-emerald-400 border border-emerald-500/30">Functional Testing</span>
+                        <span class="px-3 py-1 text-sm rounded-full bg-emerald-900/30 text-emerald-400 border border-emerald-500/30">Test Cases</span>
+                    </div>
+                </div>
+
+                <!-- Dev Stack -->
+                <div class="bg-navy-800 p-8 rounded-2xl border border-white/5 hover:border-blue-500/30 transition-all duration-300 reveal reveal-delay-2 group">
+                    <div class="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-code text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Development Stack</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-sm rounded-full bg-blue-900/30 text-blue-400 border border-blue-500/30">Java</span>
+                        <span class="px-3 py-1 text-sm rounded-full bg-blue-900/30 text-blue-400 border border-blue-500/30">C++ / CLI</span>
+                        <span class="px-3 py-1 text-sm rounded-full bg-blue-900/30 text-blue-400 border border-blue-500/30">OOP</span>
+                        <span class="px-3 py-1 text-sm rounded-full bg-blue-900/30 text-blue-400 border border-blue-500/30">Data Structures</span>
+                        <span class="px-3 py-1 text-sm rounded-full bg-blue-900/30 text-blue-400 border border-blue-500/30">Computer Networks</span>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="bg-navy-800 p-8 rounded-2xl border border-white/5 hover:border-purple-500/30 transition-all duration-300 reveal reveal-delay-3 group">
+                    <div class="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-brain text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Soft Skills</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-sm rounded-full bg-purple-900/30 text-purple-400 border border-purple-500/30">Problem-Solving</span>
+                        <span class="px-3 py-1 text-sm rounded-full bg-purple-900/30 text-purple-400 border border-purple-500/30">Critical Thinking</span>
+                        <span class="px-3 py-1 text-sm rounded-full bg-purple-900/30 text-purple-400 border border-purple-500/30">Teamwork</span>
+                        <span class="px-3 py-1 text-sm rounded-full bg-purple-900/30 text-purple-400 border border-purple-500/30">Time Management</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Projects Section -->
+    <section id="projects" class="py-24 bg-navy-800">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex items-center space-x-4 mb-12 reveal">
+                <h2 class="text-3xl font-bold text-white"><span class="text-emerald-500 text-2xl font-mono">03.</span> Projects & Experience</h2>
+                <div class="h-px bg-white/10 flex-grow"></div>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Project 1 -->
+                <div class="bg-navy-900 rounded-xl p-8 border border-white/5 hover:-translate-y-2 hover:shadow-neon hover:border-emerald-500/50 transition-all duration-300 reveal flex flex-col md:flex-row gap-6">
+                    <div class="md:w-1/4 text-emerald-400 font-mono text-sm pt-1">Academic Project</div>
+                    <div class="md:w-3/4">
+                        <h3 class="text-2xl font-bold text-white mb-3">El7a2ny (Smart Emergency Link System)</h3>
+                        <p class="text-gray-400 mb-4 leading-relaxed">
+                            Developed a Client/Server-based emergency response system using Java. Utilized Socket programming and multi-threading to ensure high-speed and reliable communication during emergencies. Implemented advanced OOP concepts and File I/O techniques to persistently store data.
+                        </p>
+                        <div class="flex flex-wrap gap-3 font-mono text-xs text-gray-400">
+                            <span>Java</span> • <span>Socket Programming</span> • <span>OOP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-navy-900 rounded-xl p-8 border border-white/5 hover:-translate-y-2 hover:shadow-neon hover:border-emerald-500/50 transition-all duration-300 reveal flex flex-col md:flex-row gap-6">
+                    <div class="md:w-1/4 text-emerald-400 font-mono text-sm pt-1">Academic Project</div>
+                    <div class="md:w-3/4">
+                        <h3 class="text-2xl font-bold text-white mb-3">QueueSystemGUI</h3>
+                        <p class="text-gray-400 mb-4 leading-relaxed">
+                            Developed a dynamic Windows Forms application using C++/CLI simulating a real-world bank queuing system. Implemented a custom singly linked list data structure ensuring an O(1) running time complexity for priority-based (VIP) queuing. Simulated concurrent tellers with performance metrics.
+                        </p>
+                        <div class="flex flex-wrap gap-3 font-mono text-xs text-gray-400">
+                            <span>C++ / CLI</span> • <span>Data Structures</span> • <span>Windows Forms</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-navy-900 rounded-xl p-8 border border-white/5 hover:-translate-y-2 hover:shadow-neon hover:border-emerald-500/50 transition-all duration-300 reveal flex flex-col md:flex-row gap-6">
+                    <div class="md:w-1/4 text-emerald-400 font-mono text-sm pt-1">QA Experience</div>
+                    <div class="md:w-3/4">
+                        <h3 class="text-2xl font-bold text-white mb-3">E-Commerce QA & Bug Reports</h3>
+                        <p class="text-gray-400 mb-4 leading-relaxed">
+                            Executed comprehensive manual testing across web and mobile platforms for e-commerce workflows. Drafted highly detailed, developer-friendly bug tracking reports featuring precise steps to reproduce, API logic tracing, console error logs, and severity categorization to accelerate agile debugging.
+                        </p>
+                        <div class="flex flex-wrap gap-3 font-mono text-xs text-gray-400">
+                            <span>Manual Testing</span> • <span>Bug Reporting</span> • <span>UI/UX Review</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Freelance Platforms Section -->
+    <section id="platforms" class="py-24">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4 reveal">Find Me on Freelance Platforms</h2>
+            <p class="text-gray-400 mb-12 max-w-2xl mx-auto reveal reveal-delay-1">Available for freelance QA testing and software analysis. Check out my profiles, reviews, and gigs on the platforms below.</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 reveal reveal-delay-2">
+                
+                <!-- Fiverr -->
+                <a href="https://www.fiverr.com/atta2007" target="_blank" class="flex flex-col items-center justify-center p-6 bg-navy-800 rounded-xl border border-white/5 hover:border-[#1dbf73] hover:shadow-[0_0_20px_rgba(29,191,115,0.3)] hover:-translate-y-1 transition-all duration-300 group">
+                    <i class="fa-solid fa-bolt text-3xl text-gray-400 group-hover:text-[#1dbf73] mb-3 transition-colors"></i>
+                    <span class="font-medium text-white">Fiverr</span>
+                </a>
+
+                <!-- Freelancer -->
+                <a href="https://www.freelancer.com/u/atta2007" target="_blank" class="flex flex-col items-center justify-center p-6 bg-navy-800 rounded-xl border border-white/5 hover:border-[#29b2fe] hover:shadow-[0_0_20px_rgba(41,178,254,0.3)] hover:-translate-y-1 transition-all duration-300 group">
+                    <i class="fa-solid fa-paper-plane text-3xl text-gray-400 group-hover:text-[#29b2fe] mb-3 transition-colors"></i>
+                    <span class="font-medium text-white">Freelancer</span>
+                </a>
+
+                <!-- uTest -->
+                <a href="https://www.utest.com/profile/atta2007/about" target="_blank" class="flex flex-col items-center justify-center p-6 bg-navy-800 rounded-xl border border-white/5 hover:border-[#0082c8] hover:shadow-[0_0_20px_rgba(0,130,200,0.3)] hover:-translate-y-1 transition-all duration-300 group">
+                    <i class="fa-solid fa-vial-circle-check text-3xl text-gray-400 group-hover:text-[#0082c8] mb-3 transition-colors"></i>
+                    <span class="font-medium text-white">uTest</span>
+                </a>
+
+                <!-- Test IO -->
+                <a href="https://tester.test.io/profile_pages/mohammed_atta" target="_blank" class="flex flex-col items-center justify-center p-6 bg-navy-800 rounded-xl border border-white/5 hover:border-[#f3525a] hover:shadow-[0_0_20px_rgba(243,82,90,0.3)] hover:-translate-y-1 transition-all duration-300 group">
+                    <i class="fa-solid fa-magnifying-glass-chart text-3xl text-gray-400 group-hover:text-[#f3525a] mb-3 transition-colors"></i>
+                    <span class="font-medium text-white">Test IO</span>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://linkedin.com/in/mohamed-atta-38643140b" target="_blank" class="flex flex-col items-center justify-center p-6 bg-navy-800 rounded-xl border border-white/5 hover:border-[#0a66c2] hover:shadow-[0_0_20px_rgba(10,102,194,0.3)] hover:-translate-y-1 transition-all duration-300 group">
+                    <i class="fa-brands fa-linkedin-in text-3xl text-gray-400 group-hover:text-[#0a66c2] mb-3 transition-colors"></i>
+                    <span class="font-medium text-white">LinkedIn</span>
+                </a>
+
+                <!-- GitHub -->
+                <a href="https://github.com/Abu-Al-Atait" target="_blank" class="flex flex-col items-center justify-center p-6 bg-navy-800 rounded-xl border border-white/5 hover:border-[#ffffff] hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:-translate-y-1 transition-all duration-300 group">
+                    <i class="fa-brands fa-github text-3xl text-gray-400 group-hover:text-white mb-3 transition-colors"></i>
+                    <span class="font-medium text-white">GitHub</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-navy-800 border-t border-white/5">
+        <div class="max-w-4xl mx-auto px-6 text-center reveal">
+            <h2 class="text-3xl font-bold text-white mb-6">Get In Touch</h2>
+            <p class="text-gray-400 mb-12 max-w-lg mx-auto">
+                Currently looking for freelance QA and beta testing opportunities. Whether you have a question or just want to say hi, my inbox is always open!
+            </p>
+
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8 mb-12">
+                <!-- Email -->
+                <a href="mailto:mohmmed.320250156@ejust.edu.eg" class="flex items-center gap-4 text-gray-300 hover:text-emerald-400 transition-colors">
+                    <div class="w-12 h-12 rounded-full bg-navy-900 border border-white/10 flex items-center justify-center text-xl">
+                        <i class="fa-regular fa-envelope"></i>
+                    </div>
+                    <span class="font-mono text-sm">mohmmed.320250156@ejust.edu.eg</span>
+                </a>
+                
+                <!-- Phone -->
+                <a href="tel:+201281844823" class="flex items-center gap-4 text-gray-300 hover:text-emerald-400 transition-colors">
+                    <div class="w-12 h-12 rounded-full bg-navy-900 border border-white/10 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <span class="font-mono text-sm">+20 128 184 4823</span>
+                </a>
+
+                <!-- Location -->
+                <div class="flex items-center gap-4 text-gray-300">
+                    <div class="w-12 h-12 rounded-full bg-navy-900 border border-white/10 flex items-center justify-center text-xl text-emerald-500">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <span class="font-mono text-sm">Mahmoudiyah, El Beheira</span>
+                </div>
+            </div>
+
+            <a href="mailto:mohmmed.320250156@ejust.edu.eg" class="inline-block px-10 py-4 rounded-lg bg-transparent border-2 border-emerald-500 text-emerald-400 font-bold tracking-wide hover:bg-emerald-500/10 transition-colors">
+                Say Hello
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-navy-900 text-center border-t border-white/5">
+        <p class="text-gray-500 font-mono text-sm">
+            Designed & Built by <span class="text-emerald-500">Mohamed Atta</span> © 2026
+        </p>
+    </footer>
+
+    <!-- Scripts for Animations & Mobile Menu -->
+    <script>
+        // Scroll Reveal Animations using Intersection Observer
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            reveals.forEach(reveal => {
+                revealOnScroll.observe(reveal);
+            });
+
+            // Mobile Menu Toggle
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const menuLinks = menu.querySelectorAll('a');
+
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu on click
+            menuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                });
+            });
+
+            // Navbar background on scroll
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('shadow-lg', 'bg-navy-900/90');
+                    navbar.classList.remove('bg-navy-900/80');
+                } else {
+                    navbar.classList.add('bg-navy-900/80');
+                    navbar.classList.remove('shadow-lg', 'bg-navy-900/90');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
